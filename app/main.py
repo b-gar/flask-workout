@@ -9,7 +9,8 @@ app = Flask(__name__)
 def get_workout():
     if request.method == "POST":
         try:
-            os.environ.get("GOOGLE_APPLICATION_CREDENTIALS")
+            secret = os.environ.get("GOOGLE_APPLICATION_CREDENTIALS")
+            return "secret able to be accessed"
         except Exception as e:
             return e
         # table_id = "flask-workout.workout.exercises"
