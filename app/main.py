@@ -8,19 +8,16 @@ app = Flask(__name__)
 @app.route("/", methods=["GET", "POST"])
 def get_workout():
     if request.method == "POST":
-        try:
-            secret = os.environ.get("GOOGLE_APPLICATION_CREDENTIALS")
-            return secret[0]
-        except Exception as e:
-            return e
-        # table_id = "flask-workout.workout.exercises"
-        # query = f"""
-        #     SELECT exercise, category
-        #     FROM {table_id}
-        #     WHERE
-        #     type = 'Kettlebell';
-        #     """
-        # query_job = client.query(query)
+        client = bigquery.Client()
+        table_id = "flask-workout.workout.exercises"
+        query = f"""
+            SELECT exercise, category
+            FROM {table_id}
+            WHERE
+            type = 'Kettlebell';
+            """
+        query_job = client.query(query)
+        return query_job
         # df = query_job.result().to_dataframe()
         # return df.head()
     else:
