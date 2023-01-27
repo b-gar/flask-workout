@@ -7,16 +7,19 @@ app = Flask(__name__)
 @app.route("/", methods=["GET", "POST"])
 def get_workout():
     if request.method == "POST":
-        client = bigquery.Client()
-        table_id = "flask-workout.workout.exercises"
-        query = f"""
-            SELECT exercise, category
-            FROM {table_id}
-            WHERE
-            type = 'Kettlebell';  
-            """
-        query_job = client.query(query)
-        df = query_job.result().to_dataframe()
-        return df.head()
+        try:
+            client = bigquery.Client()
+            table_id = "flask-workout.workout.exercises"
+            query = f"""
+                SELECT exercise, category
+                FROM {table_id}
+                WHERE
+                type = 'Kettlebell';  
+                """
+            query_job = client.query(query)
+            df = query_job.result().to_dataframe()
+            return df.head()
+        except Exception as e:
+            print(e)
     else:
         return render_template("base.html")
