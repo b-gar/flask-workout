@@ -1,14 +1,14 @@
 from flask import Flask, render_template, request
 import pandas as pd
-from google.cloud import bigquery
-import os
+from utils import google_authenticate
 
 app = Flask(__name__)
 
 @app.route("/", methods=["GET", "POST"])
 def get_workout():
     if request.method == "POST":
-        client = bigquery.Client()
+
+        client = google_authenticate()
         table_id = "flask-workout.workout.exercises"
         query = f"""
             SELECT exercise, category
@@ -17,8 +17,7 @@ def get_workout():
             type = 'Kettlebell';
             """
         query_job = client.query(query)
-        return query_job
-        # df = query_job.result().to_dataframe()
-        # return df.head()
+        df = query_job.result().to_dataframe()
+        return df.head().to_dict()
     else:
         return render_template("base.html")
