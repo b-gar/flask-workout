@@ -1,11 +1,12 @@
-from google.cloud import bigquery
-from google.oauth2 import service_account
+import boto3
+import os
 
-def google_authenticate():
-    key_path = "flask-workout-bigquery-secret"
-
-    credentials = service_account.Credentials.from_service_account_file(
-        key_path, scopes=["https://www.googleapis.com/auth/cloud-platform"]
+def aws_authenticate(table_name):
+    dynamo = boto3.resource(
+        service_name="dynamodb",
+        region_name="us-west-2",
+        aws_access_key_id=os.getenv("AWS_KEY_ID"),
+        aws_secret_access_key=os.getenv("AWS_SECRET")
     )
-    client = bigquery.Client(credentials=credentials, project=credentials.project_id)
-    return client
+    table = dynamo.Table(table_name)
+    return table
