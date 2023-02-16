@@ -2,4 +2,5 @@
 Dockerfile
 .idea/
 .git/
+__pyache__/
 README.md
