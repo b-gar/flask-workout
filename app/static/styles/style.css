@@ -73,11 +73,14 @@ body {
     padding: 1em;
 }
 
+/* Select Inputs */
 .selector:hover,
 .selector:focus {
     cursor: pointer;
+    background-image: linear-gradient(transparent,rgba(0,0,0,.05) 40%,rgba(0,0,0,.1));
 }
 
+/* Slider Input */
 .time-slider {
     -webkit-appearance: none;
     width: 15em;
@@ -119,6 +122,7 @@ body {
     background-image: linear-gradient(transparent,rgba(0,0,0,.05) 40%,rgba(0,0,0,.1));
 }
 
+/* Create Button */
 .create-btn {
     color: black;
     font-weight: bold;
