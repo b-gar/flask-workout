@@ -4,11 +4,17 @@ from math import floor, ceil
 import pandas as pd
 
 def aws_authenticate(table_name):
+    # dynamo = boto3.resource(
+    #     service_name="dynamodb",
+    #     region_name="us-west-2",
+    #     aws_access_key_id=os.getenv("AWS_KEY_ID"),
+    #     aws_secret_access_key=os.getenv("AWS_SECRET")
+    # )
     dynamo = boto3.resource(
         service_name="dynamodb",
         region_name="us-west-2",
-        aws_access_key_id=os.getenv("AWS_KEY_ID"),
-        aws_secret_access_key=os.getenv("AWS_SECRET")
+        aws_access_key_id='AKIA5ZPR6J2A5F3AYOUV',
+        aws_secret_access_key='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'
     )
     table = dynamo.Table(table_name)
     return table
