@@ -31,22 +31,10 @@
                     <button type="submit" class="pure-button create-btn">CREATE</button>
                 </fieldset>
             </form>
-            <table class="pure-table pure-table-striped">
-                <thead>
-                    <tr>
-                        <th>Difficulty</th>
-                        <th>Equipment</th>
-                        <th>Duration</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>{{difficulty}}</td>
-                        <td>{{equipment}}</td>
-                        <td>{{duration}}</td>
-                    </tr>
-                </tbody>
-            </table>
+            {% if df.shape[0] == 0 %}
+            {% else %}
+                {{ df.to_html(index=False, justify="center", classes=["pure-table", "pure-table-striped"]) | safe}}
+            {% endif %}
             <a href="/static/images/brick.jpg" download="my_file.jpg"><button>Download</button></a>
         </div>
     </div>

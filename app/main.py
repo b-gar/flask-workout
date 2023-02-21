@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 import pandas as pd
+from math import ceil
 from utils import aws_authenticate, dynamo_to_df, num_exercises
 
 app = Flask(__name__)
@@ -15,9 +16,10 @@ def home():
 def create():
     if request.method == "POST":
         n_exercises = num_exercises(request.form.get("difficulty"), request.form.get("duration"))
-        return render_template("create.html", difficulty=n_exercises, equipment="", duration="")
+        df_new = df.groupby("Focus").sample(ceil(n_exercises / 3)).sample(n_exercises).drop("key", axis=1)
+        return render_template("create.html", df=df_new)
     else:
-        return render_template("create.html")
+        return render_template("create.html", df=pd.DataFrame())
 
 if __name__ == "__main__":
     app.run(debug=True)
