@@ -1,14 +1,20 @@
 import boto3
 import os
-from math import floor
+from math import floor, ceil
 import pandas as pd
 
 def aws_authenticate(table_name):
+    # dynamo = boto3.resource(
+    #     service_name="dynamodb",
+    #     region_name="us-west-2",
+    #     aws_access_key_id=os.getenv("AWS_KEY_ID"),
+    #     aws_secret_access_key=os.getenv("AWS_SECRET")
+    # )
     dynamo = boto3.resource(
         service_name="dynamodb",
         region_name="us-west-2",
-        aws_access_key_id=os.getenv("AWS_KEY_ID"),
-        aws_secret_access_key=os.getenv("AWS_SECRET")
+        aws_access_key_id='AKIA5ZPR6J2A5F3AYOUV',
+        aws_secret_access_key='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'
     )
     table = dynamo.Table(table_name)
     return table
@@ -51,3 +57,41 @@ def num_exercises(difficulty_input, duration_input):
     time = set_time(difficulty_input)
     rest = rest_time(difficulty_input)
     return floor(((int(duration_input) * 60) + rest) / time)
+
+def filter_exercises(df, equipment_input, n_exercises):
+    if equipment_input == "Bodyweight":
+        return df[df.Equipment == "Bodyweight"].groupby("Focus").sample(ceil(n_exercises / 3)).sample(n_exercises).drop(["key", "Focus", "Category", "Equipment"], axis=1)
+    elif equipment_input == "Kettlebell":
+        return df[df.Equipment == "Kettlebell"].groupby("Focus").sample(ceil(n_exercises / 3)).sample(n_exercises).drop(["key", "Focus", "Category", "Equipment"], axis=1)
+    else:
+        return df.groupby("Focus").sample(ceil(n_exercises / 3)).sample(n_exercises).drop(["key", "Focus", "Category", "Equipment"], axis=1)
+
+def create_table(df, difficulty_input):
+    if difficulty_input == "Very Easy":
+        df["Sets"] = 3
+        df["Time(s)"] = 20
+        df["Set Rest(s)"] = 10
+        df["Rest(s)"] = 50
+    elif difficulty_input == "Easy":
+        df["Sets"] = 3
+        df["Time(s)"] = 30
+        df["Set Rest(s)"] = 10
+        df["Rest(s)"] = 50
+    elif difficulty_input == "Moderate":
+        df["Sets"] = 3
+        df["Time(s)"] = 30
+        df["Set Rest(s)"] = 10
+        df["Rest(s)"] = 40
+    elif difficulty_input == "Hard":
+        df["Sets"] = 4
+        df["Time(s)"] = 30
+        df["Set Rest(s)"] = 10
+        df["Rest(s)"] = 40
+    else:
+        df["Sets"] = 4
+        df["Time(s)"] = 40
+        df["Set Rest(s)"] = 10
+        df["Rest(s)"] = 50
+    return df
+
+
