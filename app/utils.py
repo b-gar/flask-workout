@@ -29,18 +29,25 @@ def dynamo_to_df(table):
             break
     return pd.DataFrame(results)
 
-def num_exercises(difficulty_input, duration_input):
-    if difficulty_input == "Easy":
-        return floor(int(duration_input) / 2.75)
+def set_time(difficulty_input):
+    if difficulty_input == "Very Easy":
+        return 130
+    elif difficulty_input == "Easy":
+        return 160
     elif difficulty_input == "Moderate":
-        return floor(int(duration_input) / 3.42)
+        return 150
+    elif difficulty_input == "Hard":
+        return 190
     else:
-        return floor(int(duration_input) / 4.42)
+        return 240
 
-def num_seconds(difficulty_input):
-    if difficulty_input == "Easy":
-        return 20
-    elif difficulty_input == "Moderate":
-        return 30
+def rest_time(difficulty_input):
+    if difficulty_input in ["Moderate", "Hard"]:
+        return 40
     else:
-        return 45
+        return 50
+
+def num_exercises(difficulty_input, duration_input):
+    time = set_time(difficulty_input)
+    rest = rest_time(difficulty_input)
+    return floor(((int(duration_input) * 60) + rest) / time)

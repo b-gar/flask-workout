@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 import pandas as pd
-from utils import aws_authenticate, dynamo_to_df, num_exercises, num_seconds
+from utils import aws_authenticate, dynamo_to_df, num_exercises
 
 app = Flask(__name__)
 
@@ -15,8 +15,7 @@ def home():
 def create():
     if request.method == "POST":
         n_exercises = num_exercises(request.form.get("difficulty"), request.form.get("duration"))
-        n_seconds = num_seconds(request.form.get("difficulty"))
-        return render_template("create.html", difficulty=n_exercises, equipment=n_seconds, duration="")
+        return render_template("create.html", difficulty=n_exercises, equipment="", duration="")
     else:
         return render_template("create.html")
 
