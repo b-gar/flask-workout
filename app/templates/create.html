@@ -1,41 +1,41 @@
 {% extends 'base.html' %}
 {% block content %}
-    <div class="pure-g create-main">
-        <div class="pure-u-1 create-inner">
-            <h1>Create a Random HIIT Workout:</h1>
-            <form class="pure-form pure-form-aligned" method="post">
-                <fieldset>
-                    <div class="pure-control-group">
-                        <label for="difficulty-input">Difficulty</label>
-                        <select id="difficulty-input" class="selector" name="difficulty">
-                            <option>Very Easy</option>
-                            <option>Easy</option>
-                            <option>Moderate</option>
-                            <option>Hard</option>
-                            <option>Very Hard</option>
-                        </select>
-                    </div>
-                    <div class="pure-control-group">
-                        <label for="equipment-input">Equipment</label>
-                        <select id="equipment-input" class="selector" name="equipment">
-                            <option>Bodyweight</option>
-                            <option>Kettlebell</option>
-                            <option>Bodyweight + Kettlebell</option>
-                        </select>
-                    </div>
-                    <div class="pure-control-group">
-                        <label for="time-input">Duration (Minutes)</label>
-                        <input id="time-input" class="time-slider" name="duration" type="range" min="15" max="60" value="30" step="5">
-                        <span id="time-val" class="pure-form-message-inline" name="time"></span>
-                    </div>
-                    <button type="submit" class="pure-button create-btn">CREATE</button>
-                </fieldset>
-            </form>
-            {% if df.shape[0] == 0 %}
-            {% else %}
-                {{ df.to_html(index=False, justify="center", classes=["pure-table", "pure-table-striped"]) | safe}}
-            {% endif %}
-            <a href="/static/images/brick.jpg" download="my_file.jpg"><button>Download</button></a>
-        </div>
-    </div>
+<div class="pure-g create-main">
+   <div class="pure-u-1 create-inner">
+      <h1>Create a Random HIIT Workout:</h1>
+      <form class="pure-form pure-form-aligned" method="post">
+         <fieldset>
+            <div class="pure-control-group">
+               <label for="difficulty-input">Difficulty</label>
+               <select id="difficulty-input" class="selector" name="difficulty">
+                  <option>Very Easy</option>
+                  <option>Easy</option>
+                  <option>Moderate</option>
+                  <option>Hard</option>
+                  <option>Very Hard</option>
+               </select>
+            </div>
+            <div class="pure-control-group">
+               <label for="equipment-input">Equipment</label>
+               <select id="equipment-input" class="selector" name="equipment">
+                  <option>Bodyweight</option>
+                  <option>Kettlebell</option>
+                  <option>Bodyweight + Kettlebell</option>
+               </select>
+            </div>
+            <div class="pure-control-group">
+               <label for="time-input">Duration (Minutes)</label>
+               <input id="time-input" class="time-slider" name="duration" type="range" min="15" max="60" value="30" step="5">
+               <span id="time-val" class="pure-form-message-inline" name="time"></span>
+            </div>
+            <button type="submit" class="pure-button create-btn">CREATE</button>
+         </fieldset>
+      </form>
+      {% if df.shape[0] == 0 %}
+      {% else %}
+        {{ df.to_html(index=False, justify="center", classes=["pure-table", "pure-table-striped"]) | safe}}
+      {% endif %}
+      <a href="/static/images/brick.jpg" download="my_file.jpg"><button>Download</button></a>
+   </div>
+</div>
 {% endblock %}
