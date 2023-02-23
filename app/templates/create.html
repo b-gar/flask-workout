@@ -37,7 +37,7 @@
       {% else %}
         {{ df.to_html(index=False, classes=["pure-table", "pure-table-striped"]) | safe}}
         <div class="form-btn">
-          <a href="/download" download><button class="pure-button create-btn">DOWNLOAD</button></a>
+          <a href="/static/exercises.csv" download><button class="pure-button create-btn">DOWNLOAD</button></a>
           <a href="/share" ><button class="pure-button create-btn">SHARE</button></a>
         </div>
       {% endif %}
