@@ -83,6 +83,11 @@ body {
   justify-content: center;
 }
 
+/* Center Create Button */
+.form-btn {
+  text-align: center;
+}
+
 /* Select Inputs */
 .selector:hover,
 .selector:focus {
@@ -170,6 +175,11 @@ table.dataframe {
   width: 12em;
 }
 
+/* Download Button */
+.share-btn {
+  text-align: center;
+}
+
 /* FOOTER */
 .footer {
   display: table;
@@ -238,5 +248,20 @@ table.dataframe {
   .create-main {
     padding-top: 0.5em;
   }
+  
+  table.dataframe {
+    margin: 0.5em auto;
+  }
+  
+  .pure-form-message-inline {
+    display: inline-block;
+  }
+  
+  .create-inner h1 {
+    font-size: 1.7em;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
 }
 

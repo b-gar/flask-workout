@@ -28,14 +28,19 @@
                <input id="time-input" class="time-slider" name="duration" type="range" min="15" max="60" value="30" step="5">
                <span id="time-val" class="pure-form-message-inline" name="time"></span>
             </div>
-            <button type="submit" class="pure-button create-btn">CREATE</button>
+           <div class="form-btn">
+             <button type="submit" class="pure-button create-btn">CREATE</button>
+           </div>
          </fieldset>
       </form>
       {% if df.shape[0] == 0 %}
       {% else %}
-        {{ df.to_html(index=False, justify="center", classes=["pure-table", "pure-table-striped"]) | safe}}
+        {{ df.to_html(index=False, classes=["pure-table", "pure-table-striped"]) | safe}}
+        <div class="form-btn">
+          <a href="/download" download><button class="pure-button create-btn">DOWNLOAD</button></a>
+          <a href="/share" ><button class="pure-button create-btn">SHARE</button></a>
+        </div>
       {% endif %}
-      <a href="/static/images/brick.jpg" download="my_file.jpg"><button>Download</button></a>
    </div>
 </div>
 {% endblock %}
