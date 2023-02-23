@@ -4,3 +4,4 @@ Dockerfile
 .git/
 __pyache__/
 README.md
+aws.py
