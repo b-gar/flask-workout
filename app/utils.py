@@ -1,23 +1,29 @@
 import boto3
+from flask_mail import Mail
 import os
 from math import floor, ceil
 import pandas as pd
 
 def aws_authenticate(table_name):
-    # dynamo = boto3.resource(
-    #     service_name="dynamodb",
-    #     region_name="us-west-2",
-    #     aws_access_key_id=os.getenv("AWS_KEY_ID"),
-    #     aws_secret_access_key=os.getenv("AWS_SECRET")
-    # )
     dynamo = boto3.resource(
         service_name="dynamodb",
         region_name="us-west-2",
-        aws_access_key_id='AKIA5ZPR6J2A5F3AYOUV',
-        aws_secret_access_key='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'
+        aws_access_key_id=os.getenv("AWS_KEY_ID"),
+        aws_secret_access_key=os.getenv("AWS_SECRET")
     )
     table = dynamo.Table(table_name)
     return table
+
+def gmail_authenticate(app):
+    app.config['MAIL_SERVER'] = "smtp.gmail.com"
+    app.config['MAIL_PORT'] = 465
+    app.config['MAIL_USERNAME'] = "swolify.app@gmail.com"
+    app.config['MAIL_PASSWORD'] = os.getenv("GMAIL_PASSWORD")
+    app.config['MAIL_DEFAULT_SENDER'] = "swolify.app@gmail.com"
+    app.config['MAIL_USE_TLS'] = False
+    app.config['MAIL_USE_SSL'] = True
+    mail = Mail(app)
+    return mail
 
 def dynamo_to_df(table):
     results = []

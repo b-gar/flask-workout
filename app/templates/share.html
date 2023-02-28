@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="pure-g share-main">
+  <div class=pure-u-1>
+    <h1>Save Your Created Workout:</h1>
+  </div>
+  <div class="pure-u-1 share-row2">
+    <a href="/static/exercises.csv" download><button class="pure-button core-btn">DOWNLOAD</button></a>
+  </div>
+  <div class="pure-u-1 share-row3">
+    <form class="pure-form pure-form-aligned" method="post">
+    <fieldset>
+      <input type="email" class="pure-input" name="email" placeholder="Email Address" required="" />
+      <button class="pure-button core-btn">SEND</button>
+    </fieldset>
+  </form>
+  </div>
+</div>
+{% endblock %}

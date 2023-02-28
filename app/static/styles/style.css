@@ -36,11 +36,21 @@
   text-decoration: underline;
 }
 
-/* HOME PAGE */
+/* CORE */
 body {
   overflow: hidden;
 }
 
+/* Buttons */
+.core-btn {
+  color: black;
+  font-weight: bold;
+  background-color: #38b6ff;
+  border: 0.1em solid black;
+  border-radius: 0.75em;
+}
+
+/* HOME PAGE */
 .home-background {
   height: 95vh;
   background: url(/static/images/swolify.png);
@@ -59,12 +69,7 @@ body {
 
 /* Get Started Button */
 .home-btn {
-  color: black;
-  font-weight: bold;
-  background-color: #38b6ff;
   font-size: 125%;
-  border: 0.1em solid black;
-  border-radius: 0.75em;
 }
 
 /* CREATE PAGE */
@@ -72,20 +77,15 @@ body {
   padding: 1em;
 }
 
-.create-inner h1 {
+.create-row1 h1 {
   text-align: center;
 }
 
 /* Center Inputs */
-.pure-form-aligned {
+.pure-form {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-/* Center Buttons */
-.form-btn {
-  text-align: center;
 }
 
 /* Select Inputs */
@@ -137,13 +137,8 @@ body {
   background-image: linear-gradient(transparent,rgba(0,0,0,.05) 40%,rgba(0,0,0,.1));
 }
 
-/* Create Button */
-.create-btn {
-  color: black;
-  font-weight: bold;
-  background-color: #38b6ff;
-  border: 0.1em solid black;
-  border-radius: 0.75em;
+.form-btn {
+  text-align: center;
 }
 
 /* Table Styling */
@@ -164,7 +159,7 @@ table.dataframe {
   color: white;
 }
 
-.dataframe thead tr{
+.dataframe thead tr {
   display: block;
 }
 
@@ -175,9 +170,18 @@ table.dataframe {
   width: 12em;
 }
 
-/* Download Button */
-.share-btn {
+.create-row2 {
   text-align: center;
+}
+
+/* SHARE PAGE */
+.share-main {
+  padding: 1em;
+  text-align: center;
+}
+
+.share-row2 {
+  margin: 1em;
 }
 
 /* FOOTER */
@@ -257,10 +261,14 @@ table.dataframe {
     display: inline-block;
   }
   
-  .create-inner h1 {
+  .create-row1 h1 {
     font-size: 1.7em;
     margin-top: 0;
     margin-bottom: 0;
+  }
+  
+  .core-btn {
+    font-size: 90%;
   }
 
 }

@@ -1,46 +1,46 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="pure-g create-main">
-   <div class="pure-u-1 create-inner">
-      <h1>Create a Random HIIT Workout:</h1>
+  <div class="pure-u-1 create-row1">
+    <h1>Create a Random HIIT Workout:</h1>
       <form class="pure-form pure-form-aligned" method="post">
-         <fieldset>
-            <div class="pure-control-group">
-               <label for="difficulty-input">Difficulty</label>
-               <select id="difficulty-input" class="selector" name="difficulty">
-                  <option>Very Easy</option>
-                  <option>Easy</option>
-                  <option>Moderate</option>
-                  <option>Hard</option>
-                  <option>Very Hard</option>
+        <fieldset>
+          <div class="pure-control-group">
+            <label for="difficulty-input">Difficulty</label>
+              <select id="difficulty-input" class="selector" name="difficulty">
+                <option>Very Easy</option>
+                <option>Easy</option>
+                <option>Moderate</option>
+                <option>Hard</option>
+                <option>Very Hard</option>
                </select>
             </div>
             <div class="pure-control-group">
-               <label for="equipment-input">Equipment</label>
-               <select id="equipment-input" class="selector" name="equipment">
-                  <option>Bodyweight</option>
-                  <option>Kettlebell</option>
-                  <option>Bodyweight + Kettlebell</option>
-               </select>
+              <label for="equipment-input">Equipment</label>
+              <select id="equipment-input" class="selector" name="equipment">
+              <option>Bodyweight</option>
+              <option>Kettlebell</option>
+              <option>Bodyweight + Kettlebell</option>
+              </select>
             </div>
             <div class="pure-control-group">
-               <label for="time-input">Duration (Minutes)</label>
-               <input id="time-input" class="time-slider" name="duration" type="range" min="15" max="60" value="30" step="5">
-               <span id="time-val" class="pure-form-message-inline" name="time"></span>
+              <label for="time-input">Duration (Minutes)</label>
+              <input id="time-input" class="time-slider" name="duration" type="range" min="15" max="60" value="30" step="5">
+              <span id="time-val" class="pure-form-message-inline" name="time"></span>
             </div>
-           <div class="form-btn">
-             <button type="submit" class="pure-button create-btn">CREATE</button>
-           </div>
+            <div class="form-btn">
+              <button type="submit" class="pure-button core-btn">CREATE</button>
+            </div>
          </fieldset>
       </form>
-      {% if df.shape[0] == 0 %}
-      {% else %}
-        {{ df.to_html(index=False, classes=["pure-table", "pure-table-striped"]) | safe}}
-        <div class="form-btn">
-          <a href="/static/exercises.csv" download><button class="pure-button create-btn">DOWNLOAD</button></a>
-          <a href="/share" ><button class="pure-button create-btn">SHARE</button></a>
-        </div>
-      {% endif %}
-   </div>
+  </div>
+  {% if df.shape[0] == 0 %}
+  {% else %}
+    {{ df.to_html(index=False, classes=["pure-table", "pure-table-striped"]) | safe}}
+    <div class="pure-u-1 create-row2">
+      <p>To download or email this workout click below</p>
+      <a href="{{ url_for('share') }}"><button class="pure-button core-btn">GET</button></a>
+    </div>
+  {% endif %}
 </div>
 {% endblock %}
