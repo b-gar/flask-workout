@@ -36,7 +36,9 @@
   </div>
   {% if df.shape[0] == 0 %}
   {% else %}
-    {{ df.to_html(index=False, classes=["pure-table", "pure-table-striped"]) | safe}}
+    <div class="pure-u-1">
+      {{ df.to_html(index=False, classes=["pure-table", "pure-table-striped"]) | safe}}
+    </div>
     <div class="pure-u-1 create-row2">
       <p>To download or email this workout click below</p>
       <a href="{{ url_for('share') }}"><button class="pure-button core-btn">GET</button></a>

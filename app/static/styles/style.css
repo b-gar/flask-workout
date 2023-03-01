@@ -151,7 +151,7 @@ table.dataframe {
 .dataframe tbody {
   display: block;
   overflow: auto;
-  height: 250px;
+  height: 30vh;
 }
 
 .dataframe thead {
@@ -251,6 +251,7 @@ table.dataframe {
 
   .create-main {
     padding-top: 0.5em;
+    font-size: 0.8em;
   }
   
   table.dataframe {
@@ -270,6 +271,5 @@ table.dataframe {
   .core-btn {
     font-size: 90%;
   }
-
 }
 

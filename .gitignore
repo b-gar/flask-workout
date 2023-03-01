@@ -6,3 +6,6 @@ flask-workout*
 
 # Cache
 __pycache__/
+
+# Exercises File
+exercises.csv
