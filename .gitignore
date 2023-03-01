@@ -1,9 +1,6 @@
 # Pycharm Folder
 .idea/
 
-# GCP Key
-flask-workout*
-
 # Cache
 __pycache__/
 

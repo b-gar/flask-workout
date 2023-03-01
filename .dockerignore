@@ -5,3 +5,4 @@ Dockerfile
 __pyache__/
 README.md
 aws.py
+exercises.csv
