@@ -47,5 +47,9 @@ def share():
     else:
         return render_template("share.html")
 
+@app.route("/about", methods=["GET", "POST"])
+def about():
+    return render_template("about.html")
+
 if __name__ == "__main__":
     app.run(debug=True)
