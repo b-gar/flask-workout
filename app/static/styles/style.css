@@ -145,6 +145,7 @@ body {
 table.dataframe {
   margin: 1em auto;
   width: 40%;
+  border: 0;
   border-collapse: collapse;
 }
 
@@ -168,6 +169,7 @@ table.dataframe {
   padding: 5px;
   text-align: left;
   width: 12em;
+  border: 0;
 }
 
 .create-row2 {
@@ -183,6 +185,47 @@ table.dataframe {
 .share-row2 {
   margin: 1em;
 }
+
+/* ABOUT PAGE */
+.about-main {
+  padding: 1em;
+  margin: 1em;
+  text-align: center;
+}
+
+table.about-table {
+  margin: 1em auto;
+  width: 25vw;
+  border: 0;
+  border-collapse: collapse;
+}
+
+.about-table tbody {
+  display: block;
+}
+
+.about-table thead {
+  background: #282828;
+  color: white;
+}
+
+.about-table thead tr {
+  display: block;
+}
+
+.about-table th,
+.about-table td {
+  padding: 5px;
+  text-align: left;
+  width: 4.5em;
+  border: 0;
+
+}
+
+.about-table th {
+  vertical-align: middle;
+}
+
 
 /* FOOTER */
 .footer {
@@ -236,6 +279,7 @@ table.dataframe {
   margin-bottom: -0.3125em;
 }
 
+/* MOBILE ADJUSTMENTS */
 @media screen and (max-width:700px) {
   .footer {
     font-size: 0.75em;
@@ -270,6 +314,10 @@ table.dataframe {
   
   .core-btn {
     font-size: 90%;
+  }
+  
+  .about-table {
+    font-size: 0.8em;
   }
 }
 
