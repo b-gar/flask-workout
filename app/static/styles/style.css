@@ -193,6 +193,10 @@ table.dataframe {
   text-align: center;
 }
 
+.about-main h2, h3 {
+  margin-bottom: 1.5em;
+}
+
 table.about-table {
   margin: 1em auto;
   width: 25vw;
